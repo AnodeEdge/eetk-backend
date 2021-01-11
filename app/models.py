@@ -13,5 +13,5 @@ class CableResistance(db.Model):
     reactance = db.Column(db.Float(precision='5,3'))
     resistance = db.Column(db.Float(precision='5,3'))
 
-    def serialize(self):
+    def to_dict(self):
         return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
