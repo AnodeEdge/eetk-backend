@@ -45,13 +45,13 @@ class VoltageDropCalc():
         voltage_drop = 2 * self.current * self.length * \
             (self.impedance / 1000) * (1 / self.parallel_sets)
         voltage_drop_percent = ( voltage_drop / self.voltage ) * 100
-        return voltage_drop, voltage_drop_percent
+        return round(voltage_drop,2), round(voltage_drop_percent,2)
 
     def three_phase_voltage_drop(self):
         # VD = sqrt(3) x I x D x (Z/1000) * (1/parallel sets)
         voltage_drop = np.sqrt(3) * self.current * self.length * \
             (self.impedance / 1000) * (1 / self.parallel_sets)
         voltage_drop_percent = ( voltage_drop / self.voltage ) * 100
-        return voltage_drop, voltage_drop_percent
+        return round(voltage_drop,2), round(voltage_drop_percent,2)
 
     

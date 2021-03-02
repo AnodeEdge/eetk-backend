@@ -8,6 +8,7 @@ from config import app_config
 from .database import db
 # from .api import api
 from .voltage_drop.routes import voltage_drop_bp
+from .conduit_fill.routes import conduit_fill_bp
 import os
 
 
@@ -27,4 +28,5 @@ def create_app(config_name):
     # register blueprints
     # app.register_blueprint(api)
     app.register_blueprint(voltage_drop_bp)
+    app.register_blueprint(conduit_fill_bp)
     return app

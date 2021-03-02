@@ -41,24 +41,19 @@ class Controller():
             conductor_material=recieved_data['conductorMaterial'],
             conduit_material=recieved_data['conduitMaterial']).first()
         return cable_data_query.to_dict()
-        
-        # combined_data = {**cable_data_json, **recieved_data}
-        # voltage_drop = VoltageDropCalc(**sanitize_vdp(**combined_data))
-        # return cable_data_json
 
     def calculate_voltage_drop(self, **inputs):
         cable_data = self.query_row(**inputs)
         combined_data = {**cable_data, **inputs}
         sanitized_data = sanitize_vdp(**combined_data)
         voltage_drop = VoltageDropCalc(**sanitized_data) 
-        # pdb.set_trace()
         if inputs["phase"] == "three":
             result, percent = voltage_drop.three_phase_voltage_drop()
         else:
             result, percent = voltage_drop.single_phase_voltage_drop()
         return {"result": result, "percent": percent}
 
-    def create_resistance_table(self, file_name="assets/voltage_drop/data.csv"):
+    def create_resistance_table(self, file_name="assets/voltage_drop/resistance_data.csv"):
         file_path = os.path.join(self.app_path, file_name)
         with open(file_path, newline='') as csvfile:
             db.session.query(CableResistance).delete()

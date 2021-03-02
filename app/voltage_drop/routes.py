@@ -11,7 +11,7 @@ voltage_drop_bp = Blueprint(
 ctrl = Controller()
 
 @voltage_drop_bp.route('/')
-def whatever():
+def test():
     return "Found"
 
 @voltage_drop_bp.route('/inputs', methods=["POST"])

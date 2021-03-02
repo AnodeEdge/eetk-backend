@@ -15,3 +15,29 @@ class CableResistance(db.Model):
 
     def to_dict(self):
         return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
+
+
+class ConduitData(db.Model):
+
+    __tablename__ = "ConduitData"
+    id = db.Column(db.Integer(), primary_key=True)
+    conduit_type = db.Column(db.String(20))
+    trade_size = db.Column(db.String(10))
+    area = db.Column(db.Float())
+    inner_diameter = db.Column(db.Float())
+
+    def to_dict(self):
+        return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
+
+
+class ConductorData(db.Model):
+
+    __tablename__ = "ConductorData"
+    id = db.Column(db.Integer(), primary_key=True)
+    conductor_type = db.Column(db.String(30))
+    conductor_size = db.Column(db.String(15))
+    area = db.Column(db.Float())
+    diameter = db.Column(db.Float())
+
+    def to_dict(self):
+        return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
