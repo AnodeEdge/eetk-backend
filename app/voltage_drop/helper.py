@@ -53,5 +53,4 @@ class VoltageDropCalc():
             (self.impedance / 1000) * (1 / self.parallel_sets)
         voltage_drop_percent = ( voltage_drop / self.voltage ) * 100
         return round(voltage_drop,2), round(voltage_drop_percent,2)
-
     

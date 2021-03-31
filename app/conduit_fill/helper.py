@@ -24,6 +24,8 @@ class ConduitFillCalc():
         # 1.05 * inner diameter / largest cable outer diameter
         largest_conductor_diameter = 0
         for conductor in self.conductor_data:
+            if conductor['diameter'] == 0:
+                return ""
             if conductor['diameter'] > largest_conductor_diameter:
                 largest_conductor_diameter = conductor['diameter']
         if largest_conductor_diameter != 0:
